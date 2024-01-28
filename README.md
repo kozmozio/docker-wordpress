@@ -1,5 +1,5 @@
 
-# Dockerized WordPress Setup
+# Docker Envrionment for  Wordpress Nginx, PHP-fpm, MySQL, PhpmyAdmin and WordPress setup.
 
 This Docker Compose configuration provides a setup for running WordPress, MySQL, Nginx, and PHPMyAdmin using Docker containers.
 
@@ -36,24 +36,39 @@ Build for easy development setups, also possible to use in production with some 
     ```
 
  3. `bash build-dev.sh` file is a shortcut 
- 3. `docker-compose.yml` file is used to define, configure, and run  multi-container Docker applications.
+ 4. `docker-compose.yml` file is used to define, configure, and run  multi-container Docker applications.
  
      -  `docker-compose -f docker-compose.yml build`
      -  `docker-compose -f docker-compose.yml up -d` 
 
-4. Access WordPress:
+5. Access WordPress:
 
     - Open your browser and navigate to http://docker-wp.local
 
-5. Access PHPMyAdmin:
+6. Access PHPMyAdmin:
 
     - Open your browser and navigate to http://localhost:8000
     - Use the MySQL credentials specified in the `.env` file.
 
 ## Additional Configuration
 
+- **.env-sample:**
+  - Name it to `.env` and save in project root.
+
 - **Nginx Configuration:**
   - Nginx configuration can be customized by modifying `./docker/nginx.conf`.
+
+- **Dockerfile:**
+  - Customise your hosting environment config and defaults
+  
+- **docker-compose.yml:**
+      `volumes:
+      - ./wordpress:/var/www/html
+      - ./themes/twentytwentyfour:/var/www/html/wp-content/themes/twentytwentyfour
+      - ./plugins:/var/www/html/wp-content/plugins
+      - ./uploads:/var/www/html/wp-content/uploads`
+
+  
 
 ## Troubleshooting
 
