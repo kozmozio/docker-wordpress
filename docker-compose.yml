@@ -1,0 +1,114 @@
+version: '3'
+
+services:
+  # NGINX Server-------------------------------------------------------------------------
+  nginx:
+    image: nginx:1.15.12-alpine
+    container_name: nginx
+    restart: unless-stopped
+    depends_on:
+      - wordpress
+    ports:
+      - "80:80"
+    volumes:
+      # - ./wordpress:/var/www/html
+      - ./docker/nginx.conf:/etc/nginx/conf.d/default.conf
+      # - certbot-etc:/etc/letsencrypt
+    networks:
+      - docker-wp-net
+      
+  # MySQL Database -------------------------------------------------------------------
+  db:
+    image: mysql:8.0
+    container_name: db
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes: 
+      - ./db-data:/var/lib/mysql
+    command: '--default-authentication-plugin=mysql_native_password'
+    ports:
+      - "3306:3306"
+    networks:
+      - docker-wp-net
+
+  # Wordpress Application --------------------------------------------------------------
+  wordpress:
+    # image: wordpress:6.4.2-php8.2-fpm-alpine
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    image: kozmoz/wordpress:6.4.2
+    container_name: wordpress
+    restart: unless-stopped
+    # env_file: .env
+    depends_on: 
+      - db
+    environment:
+      PROJECT: ${NAMESPACE} 
+      # BUILD_TAG: ${BUILD_TAG}
+      # BUILD_NUMBER: ${BUILD_NUMBER}
+      WORDPRESS_DB_HOST: ${WORDPRESS_DB_HOST}
+      WORDPRESS_DB_USER: ${WORDPRESS_DB_USER}
+      WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
+      WORDPRESS_DB_NAME: ${WORDPRESS_DB_NAME}
+    volumes:
+      # - ./wordpress:/var/www/html
+      - ./themes/twentytwentyfour:/var/www/html/wp-content/themes/twentytwentyfour
+      # - ./plugins:/var/www/html/wp-content/plugins
+      # - ./uploads:/var/www/html/wp-content/uploads
+    networks:
+      - docker-wp-net
+    ports:
+      - "8282:80"
+
+  # PhpMyAdmin -------------------------------------------------------------------------
+  phpmyadmin:
+          image: phpmyadmin:5.2.1
+          container_name: phpmyadmin
+          restart: unless-stopped
+          depends_on:
+              - db
+          ports:
+              - "8000:8000"
+          env_file: .env
+          environment:
+              PMA_HOST: db
+              MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
+              MYSQL_USER: $MYSQL_USER
+              MYSQL_PASSWORD: $MYSQL_PASSWORD
+            # PMA_USER: ${PMA_USER}
+            # PMA_PASSWORD: ${PMA_PASSWORD}
+            # PMA_CONTROLHOST: pma.docker-wp.local
+          networks:
+            - docker-wp-net 
+  
+  # Certbot ----------------------------------------------------------------------------
+  # certbot:
+  #   depends_on:
+  #     - webserver
+  #   image: certbot/certbot
+  #   container_name: certbot
+  #   volumes:
+  #     - certbot-etc:/etc/letsencrypt
+  #     - wordpress:/var/www/html
+  #   command: certonly --webroot --webroot-path=/var/www/html --email sammy@your_domain --agree-tos --no-eff-email --staging -d your_domain -d www.your_domain
+
+# Volumes ----------------------------------------------------------------------------
+volumes:
+  # certbot-etc:
+  # include all wordpress root dir.
+  wordpress: 
+  themes:
+  plugins:
+  uploads:
+  db-data:  
+
+# Networks ----------------------------------------------------------------------------
+networks:
+  docker-wp-net:
+    driver: bridge

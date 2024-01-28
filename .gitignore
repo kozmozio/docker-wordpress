@@ -1,0 +1,42 @@
+# .gitignore
+
+# Ignore everything in the wordpress directory
+/wordpress/*
+
+# But don't ignore the themes directory
+!/wordpress/wp-content/themes
+
+# Ignore everything in the themes directory
+/wordpress/wp-content/themes/*
+
+# But don't ignore your specific theme
+!/wordpress/wp-content/themes/your-theme
+
+# Ignore the db-data directory
+/db-data
+
+
+# General ignores
+/vendor/
+/node_modules/
+
+
+# Rocketeer PHP task runner and deployment package. https://github.com/rocketeers/rocketeer
+/.rocketeer/
+
+# PHPStorm IDE
+/.idea/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Logs
+*.log
+
+# PHPUnit
+/phpunit.xml
+
+
