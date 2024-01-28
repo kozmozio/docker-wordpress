@@ -15,9 +15,9 @@ Build for easy development setups, also possible to use in production with some 
 - [Install Docker](https://docs.docker.com/get-docker/)
 - [Kozmoz Wordpress Base Image](https://hub.docker.com/repository/docker/kozmozio/wordpress/general)
 - [Wordpress Base Image](https://github.com/docker-library/wordpress/tree/ac65dab91d64f611e4fa89b5e92903e163d24572/latest/php8.2/fpm-alpine)
-- [MySQL](#)
-- [Phpmyadmin](#)
-- [Nginx](#)
+- [MySQL](https://hub.docker.com/_/mysql)
+- [Phpmyadmin](https://hub.docker.com/_/phpmyadmin)
+- [Nginx](https://hub.docker.com/_/nginx)
 
 ## Services
 - `db`: MySQL 
