@@ -42,7 +42,7 @@ services:
     build: 
       context: .
       dockerfile: Dockerfile
-    image: kozmoz/wordpress:6.4.2
+    image: kozmozio/wordpress:6.4.2
     container_name: wordpress
     restart: unless-stopped
     # env_file: .env
