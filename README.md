@@ -49,7 +49,11 @@ Build for easy development setups, also possible to use in production with some 
 
 5. Access WordPress:
 
+    - Add your domain to your hosts file via terminal
+      - `sudo pico etc hosts`
+      - Add : `127.0.0.1   docker-wp.local`
     - Open your browser and navigate to http://docker-wp.local
+
 
 6. Access PHPMyAdmin:
 
@@ -82,15 +86,11 @@ Build for easy development setups, also possible to use in production with some 
   ```bash
   docker-compose logs -f
 
-
-
-
 ### Services
 - `db`: MySQL 
-
 - `wordpress` : Wordpress
-
 - `nginx`: NGINX Proxy Server
+- `phpmyadmin`: NGINX Proxy Server
 
 ### Networks
 - `docker-wp-net`: This is a custom network created for the services in this Docker Compose configuration. It uses the `bridge` driver, which is the default network driver for Docker. If you connect any services to this network, they will be able to communicate with each other.

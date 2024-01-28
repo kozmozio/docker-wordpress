@@ -10,7 +10,7 @@ docker-compose -f docker-compose.yml up -d --build --remove-orphans
 echo "Checking if all services are up and running..."
 
 
-services=("wordpress" "nginx" "db" "phpmyadmin" "wpcli")
+services=("wordpress" "nginx" "db" "phpmyadmin")
 
 
 for service in "${services[@]}"
