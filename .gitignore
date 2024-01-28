@@ -1,5 +1,7 @@
 # .gitignore
 
+.env
+
 # Ignore everything in the wordpress directory
 /wordpress/*
 
