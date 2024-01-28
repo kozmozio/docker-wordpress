@@ -1,5 +1,5 @@
 
-# Docker Development Envrionment for  Wordpress Nginx, PHP-fpm, MySQL, PhpmyAdmin and WordPress
+# Docker Development Envrionment Nginx, PHP-fpm, MySQL, PhpmyAdmin and WordPress Installation
 
 This Docker Compose configuration provides a setup for running WordPress,PHP-fpm  MySQL, Nginx, and PHPMyAdmin using Docker containers.
 
@@ -11,8 +11,20 @@ Build for easy development setups, also possible to use in production with some 
  - phpmyadmin:5.2.1
 
 
-## Prerequisites
+## Containers
+- [Kozmoz Wordpress Base Image](https://hub.docker.com/repository/docker/kozmozio/wordpress/general)
+- [Wordpress Base Image](https://github.com/docker-library/wordpress/tree/ac65dab91d64f611e4fa89b5e92903e163d24572/latest/php8.2/fpm-alpine)
+- [MySQL](#)
+- [Phpmyadmin](#)
+- [Nginx](#)
 
+## Services
+- `db`: MySQL 
+- `wordpress` : Wordpress
+- `nginx`: NGINX Proxy Server
+- `phpmyadmin`: NGINX Proxy Server
+
+### Prerequisites
 - [Docker](https://docs.docker.com/get-docker/)
 - [Docker Compose](https://docs.docker.com/compose/install/)
 
@@ -42,6 +54,8 @@ Build for easy development setups, also possible to use in production with some 
     ```
 
  3. `bash build-dev.sh` file is a shortcut 
+      - docker build -f Dockerfile -t kozmozio/wordpress:6.4.2 -t kozmozio/wordpress:6.4.2 . --no-cache
+
  4. `docker-compose.yml` file is used to define, configure, and run  multi-container Docker applications.
  
      -  `docker-compose -f docker-compose.yml build`
