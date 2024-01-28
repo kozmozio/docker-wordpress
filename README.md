@@ -72,27 +72,21 @@ Build for easy development setups, also possible to use in production with some 
   - Customise your hosting environment config and defaults
   
 - **docker-compose.yml:**
+
       `volumes:
       - ./wordpress:/var/www/html
       - ./themes/twentytwentyfour:/var/www/html/wp-content/themes/twentytwentyfour
       - ./plugins:/var/www/html/wp-content/plugins
       - ./uploads:/var/www/html/wp-content/uploads`
 
-  
 
-## Troubleshooting
-
-- If you encounter issues, check the logs:
-  ```bash
-  docker-compose logs -f
-
-### Services
+## Services
 - `db`: MySQL 
 - `wordpress` : Wordpress
 - `nginx`: NGINX Proxy Server
 - `phpmyadmin`: NGINX Proxy Server
 
-### Networks
+## Networks
 - `docker-wp-net`: This is a custom network created for the services in this Docker Compose configuration. It uses the `bridge` driver, which is the default network driver for Docker. If you connect any services to this network, they will be able to communicate with each other.
 
 ## Usage
@@ -101,3 +95,8 @@ To start the application, navigate to the directory containing this file and run
 
 `bash build-dev.sh`
 
+## Troubleshooting
+
+- If you encounter issues, check the logs:
+  ```bash
+  docker-compose logs -f
