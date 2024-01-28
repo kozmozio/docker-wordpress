@@ -3,7 +3,7 @@ version: '3'
 services:
   # NGINX Server-------------------------------------------------------------------------
   nginx:
-    image: nginx:1.15.12-alpine
+    image: nginx:1.25.3-alpine
     container_name: nginx
     restart: unless-stopped
     depends_on:
@@ -39,9 +39,9 @@ services:
   # Wordpress Application --------------------------------------------------------------
   wordpress:
     container_name: wordpress
-    build: 
-      context: .
-      dockerfile: Dockerfile
+    # build: 
+    #   context: .
+    #   dockerfile: Dockerfile
     # image: wordpress:6.4.2-php8.2-fpm-alpine
     image: kozmozio/wordpress:6.4.2
     restart: unless-stopped
@@ -58,8 +58,8 @@ services:
       WORDPRESS_DB_NAME: ${WORDPRESS_DB_NAME}
     volumes:
       - ./wordpress:/var/www/html
-      - ./plugins:/var/www/html/wp-content/plugins
-      - ./uploads:/var/www/html/wp-content/uploads
+      # - ./plugins:/var/www/html/wp-content/plugins
+      # - ./uploads:/var/www/html/wp-content/uploads
       # - ./themes/twentytwentyfour:/var/www/html/wp-content/themes/twentytwentyfour
     networks:
       - docker-wp-net

@@ -16,7 +16,8 @@
 
 # Ignore the db-data directory
 /db-data
-
+/themes
+/plugins
 
 # General ignores
 /vendor/

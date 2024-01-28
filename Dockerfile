@@ -1,9 +1,9 @@
 # Use an intermediate image for building
-FROM wordpress:6.4.2-php8.2-fpm-alpine as builder
+FROM wordpress:6.4.2-php8.1-fpm-alpine as builder
 # ... install dependencies, build your application ...
 
 # Then copy the built application to the final image
-FROM wordpress:6.4.2-php8.2-fpm-alpine
+FROM wordpress:6.4.2-php8.1-fpm-alpine
 
 
 # add custom php-fpm pool settings, these get written at entrypoint startup
@@ -66,7 +66,7 @@ COPY ./docker/nginx.conf /etc/nginx/conf.d/default.conf
 
 # copy application code
 WORKDIR /var/www/html
-VOLUME /var/www/html
+VOLUME wordpress
 
 # Copy wp-config.php 
 COPY  ./docker/wp-config-docker.php /var/www/html/wp-config.php
