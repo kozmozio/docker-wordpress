@@ -35,11 +35,9 @@ RUN docker-php-ext-install curl
 #     COMPOSER_HOME=/composer \
 #     COMPOSER_VENDOR_DIR=/var/www/docker-wp/vendor  
 
-
 # # install composer
 # RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
 #     && composer --ansi --version --no-interaction
-
 
 # Install Wordpress CLI (optional)
 # RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
@@ -48,17 +46,10 @@ RUN docker-php-ext-install curl
 
 
 
-
-# copy entrypoint files
-COPY ./docker/docker-wordpress-entrypoint.sh /usr/local/bin/
-# COPY ./docker/docker-wp-entrypoint /usr/bin/
-
-RUN dos2unix /usr/local/bin/docker-wordpress-entrypoint.sh
+# RUN dos2unix /usr/local/bin/docker-wordpress-entrypoint.sh
 # RUN dos2unix /usr/bin/docker-wp-entrypoint
 
-
-
-# copy nginx configuration
+# copy NGINX configuration
 # COPY ./docker/nginx.conf /etc/nginx/nginx.conf
 COPY ./docker/nginx.conf /etc/nginx/conf.d/default.conf
 
@@ -74,13 +65,13 @@ RUN  chown www-data:www-data /var/www/html/wp-config.php
 
 # HTACCESS
 
-
-
 # VOLUME /var/www/html
 
-# ENTRYPOINT ["docker-wordpress-entrypoint"]
+# copy entrypoint files
+COPY ./docker/docker-wordpress-entrypoint.sh /usr/local/bin/
+ENTRYPOINT ["/usr/local/bin/docker-wordpress-entrypoint.sh"]
 
 EXPOSE 80
 
-# run supervisor
+# run php-fpm
 CMD ["php-fpm"]
