@@ -1,9 +1,9 @@
 
-# Docker WordPress Development Envrionment Nginx, PHP-fpm, MySQL, PhpmyAdmin 
+# Docker WordPress Development & PRoduction Envrionment Nginx, PHP-fpm, MySQL, PhpmyAdmin 
 
 This Docker Compose configuration provides a setup for running WordPress,PHP-fpm  MySQL, Nginx, and PHPMyAdmin using Docker containers.
 
-Build for easy development setups, also possible to use in production with some tweaks.
+Build for easy development and production setups, also possible to use in production with some tweaks.
 
  - mysql:8.0
  - nginx:1.25.3-alpine
