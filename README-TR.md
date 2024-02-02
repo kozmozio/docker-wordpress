@@ -9,6 +9,12 @@ Docker Compose dosyasındaki servisler şunlardır:
 - `nginx`: NGINX Proxy Sunucusu
 - `phpmyadmin`: PHPMyAdmin
 
+## Derlenmiş Docker İmajı burada: 
+
+- [kozmozio/wordpress](https://hub.docker.com/repository/docker/kozmozio/wordpress/general)
+
+
+
 ## Önkoşullar
 - [Docker](https://docs.docker.com/get-docker/)
 - [Docker Compose](https://docs.docker.com/compose/install/)

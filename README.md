@@ -10,6 +10,10 @@ Build for easy development and production setups, also possible to use in produc
  - wordpress:6.4.2-php8.1-fpm-alpine
  - phpmyadmin:5.2.1
 
+## Cmopiled Docker Image is here : 
+
+- [kozmozio/wordpress](https://hub.docker.com/repository/docker/kozmozio/wordpress/general)
+
 
 ## Containers
 - [Install Docker](https://docs.docker.com/get-docker/)
