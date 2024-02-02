@@ -34,13 +34,15 @@ Build for easy development and production setups, also possible to use in produc
 1. Clone this repository:
 
     ```bash
-    git clone https://github.com/your-username/your-repository.git
+    git clone https://github.com/kozmozio/docker-wordpress.git
     cd your-repository
     ```
 
 2. Create a `.env` file with the required environment variables:
 
-    ```dotenv
+    ```
+    NAMESPACE=your_project_name
+
     MYSQL_DATABASE=your_db_name
     MYSQL_ROOT_PASSWORD=your_root_password
     MYSQL_USER=your_db_user
@@ -50,8 +52,10 @@ Build for easy development and production setups, also possible to use in produc
     WORDPRESS_DB_USER=your_wp_user
     WORDPRESS_DB_PASSWORD=your_wp_password
     WORDPRESS_DB_NAME=your_wp_db_name
+    WORDPRESS_DEBUG=true
+    WORDPRESS_TABLE_PREFIX=wp_
+    # WP_DEBUG=debug
 
-    NAMESPACE=your_project_name
     ```
 
  3. `bash build-dev.sh` file is a shortcut 
