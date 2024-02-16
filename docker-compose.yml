@@ -42,8 +42,8 @@ services:
     # build: 
     #   context: .
     #   dockerfile: Dockerfile
-    # image: wordpress:6.4.2-php8.2-fpm-alpine
-    image: kozmozio/wordpress:6.4.2
+    # image: wordpress:6.4.3-php8.2-fpm-alpine
+    image: kozmozio/wordpress:6.4.3
     restart: unless-stopped
     env_file: .env
     depends_on: 
