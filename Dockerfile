@@ -1,9 +1,9 @@
 # Use an intermediate image for building
-FROM wordpress:6.4.2-php8.1-fpm-alpine as builder
+FROM wordpress:6.4.3-php8.1-fpm-alpine as builder
 # ... install dependencies, build your application ...
 
 # Then copy the built application to the final image
-FROM wordpress:6.4.2-php8.1-fpm-alpine
+FROM wordpress:6.4.3-php8.1-fpm-alpine
 
 
 # add custom php-fpm pool settings, these get written at entrypoint startup

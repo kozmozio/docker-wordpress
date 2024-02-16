@@ -7,7 +7,7 @@ Build for easy development and production setups, also possible to use in produc
 
  - mysql:8.0
  - nginx:1.25.3-alpine
- - wordpress:6.4.2-php8.1-fpm-alpine
+ - wordpress:6.4.3-php8.1-fpm-alpine
  - phpmyadmin:5.2.1
 
 ## Cmopiled Docker Image is here : 
@@ -63,14 +63,18 @@ Build for easy development and production setups, also possible to use in produc
     ```
 
  3. `bash build-dev.sh` file is a shortcut 
-      - docker build -f Dockerfile -t kozmozio/wordpress:6.4.2 -t kozmozio/wordpress:6.4.2 . --no-cache
+      - `docker build -f Dockerfile -t kozmozio/wordpress:6.4.3 -t kozmozio/wordpress:6.4.3 . --no-cache`
 
- 4. `docker-compose.yml` file is used to define, configure, and run  multi-container Docker applications.
+ 4. Push to Dockker Hub (optional)
+   - `docker tag kozmozio/wordpress:6.4.3 kozmozio/wordpress:6.4.3`
+   - `docker push kozmozio/wordpress:6.4.3`
  
+ 5. Docker Compose UP!
+     -  `docker-compose.yml` file is used to define, configure, and run  multi-container Docker applications.
      -  `docker-compose -f docker-compose.yml build`
      -  `docker-compose -f docker-compose.yml up -d` 
 
-5. Access WordPress:
+6. Access WordPress:
 
     - Add your domain to your hosts file via terminal
       - `sudo pico etc hosts`
