@@ -39,19 +39,19 @@ services:
   # Wordpress Application --------------------------------------------------------------
   wordpress:
     container_name: wordpress
-    # build: 
-    #   context: .
-    #   dockerfile: Dockerfile
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    # image: kozmozio/wordpress:6.4.3
     # image: wordpress:6.4.3-php8.2-fpm-alpine
-    image: kozmozio/wordpress:6.4.3
     restart: unless-stopped
     env_file: .env
     depends_on: 
       - db
     environment:
       PROJECT: ${NAMESPACE} 
-      # BUILD_TAG: ${BUILD_TAG}
-      # BUILD_NUMBER: ${BUILD_NUMBER}
+      BUILD_TAG: ${BUILD_TAG}
+      BUILD_NUMBER: ${BUILD_NUMBER}
       WORDPRESS_DB_HOST: ${WORDPRESS_DB_HOST}
       WORDPRESS_DB_USER: ${WORDPRESS_DB_USER}
       WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
