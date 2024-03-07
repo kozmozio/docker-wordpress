@@ -57,7 +57,7 @@ COPY ./docker/nginx.conf /etc/nginx/conf.d/default.conf
 
 # copy application code
 WORKDIR /var/www/html
-VOLUME wordpress
+# VOLUME wordpress
 
 # Copy wp-config.php 
 COPY  ./docker/wp-config-docker.php /var/www/html/wp-config.php
@@ -69,6 +69,7 @@ RUN  chown www-data:www-data /var/www/html/wp-config.php
 
 # copy entrypoint files
 COPY ./docker/docker-wordpress-entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-wordpress-entrypoint.sh
 ENTRYPOINT ["/usr/local/bin/docker-wordpress-entrypoint.sh"]
 
 EXPOSE 80
