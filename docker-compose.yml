@@ -40,10 +40,10 @@ services:
   # Wordpress Application --------------------------------------------------------------
   wordpress:
     container_name: wordpress
-    # build: 
-    #   context: .
-    #   dockerfile: Dockerfile
-    image: kozmozio/wordpress:6.4.3
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    # image: kozmozio/wordpress:6.4.3
     # image: wordpress:6.4.3-php8.2-fpm-alpine
     restart: unless-stopped
     env_file: .env
