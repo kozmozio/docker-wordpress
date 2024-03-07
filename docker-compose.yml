@@ -18,23 +18,23 @@ services:
       - docker-wp-net
       
   # MySQL Database -------------------------------------------------------------------
-  db:
-    image: mysql:8.0
-    container_name: db
-    restart: unless-stopped
-    env_file: .env
-    environment:
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-    volumes: 
-      - ./db-data:/var/lib/mysql
-    command: '--default-authentication-plugin=mysql_native_password'
-    ports:
-      - "3306:3306"
-    networks:
-      - docker-wp-net
+  # db:
+  #   image: mysql:8.0
+  #   container_name: db
+  #   restart: unless-stopped
+  #   env_file: .env
+  #   environment:
+  #     MYSQL_DATABASE: ${MYSQL_DATABASE}
+  #     MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+  #     MYSQL_USER: ${MYSQL_USER}
+  #     MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+  #   volumes: 
+  #     - ./db-data:/var/lib/mysql
+  #   command: '--default-authentication-plugin=mysql_native_password'
+  #   ports:
+  #     - "3306:3306"
+  #   networks:
+  #     - docker-wp-net
 
   # Wordpress Application --------------------------------------------------------------
   wordpress:
@@ -102,11 +102,11 @@ services:
 volumes:
   # certbot-etc:
   # include all wordpress root dir.
-  wordpress: 
+  # wordpress: 
   themes:
   plugins:
   uploads:
-  db-data:  
+  # db-data:  
 
 # Networks ----------------------------------------------------------------------------
 networks:
