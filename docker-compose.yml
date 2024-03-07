@@ -46,8 +46,8 @@ services:
     image: kozmozio/wordpress:6.4.3
     restart: unless-stopped
     env_file: .env
-    depends_on: 
-      - db
+    # depends_on: 
+    #   - db
     environment:
       PROJECT: ${NAMESPACE} 
       # BUILD_TAG: ${BUILD_TAG}
