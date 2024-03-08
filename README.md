@@ -127,3 +127,7 @@ To start the application, navigate to the directory containing this file and run
 - If you encounter issues, check the logs:
   ```bash
   docker-compose logs -f
+
+## Debian Host Hestia Control Panel 
+  - Change domainconfig file  redirecting your container port
+  /etc/nginx/conf.d/domains
