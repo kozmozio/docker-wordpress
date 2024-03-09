@@ -131,3 +131,6 @@ To start the application, navigate to the directory containing this file and run
 ## Debian Host Hestia Control Panel 
   - Change domainconfig file  redirecting your container port
   /etc/nginx/conf.d/domains
+  /home/kozmoz/conf/web/loop.samplr.io/nginx.ssl.conf
+
+/usr/local/hestia/data/templates/web/nginx/

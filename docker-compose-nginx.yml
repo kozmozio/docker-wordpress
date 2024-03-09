@@ -7,7 +7,7 @@ services:
     container_name: nginx
     restart: unless-stopped
     ports:
-      - "82:82"
+      - "8282:8282"
     volumes:
       - ./index.html:/var/www/html/index.html
       - ./docker/nginx.conf:/etc/nginx/conf.d/default.conf
