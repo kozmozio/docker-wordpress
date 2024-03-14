@@ -51,7 +51,7 @@ RUN docker-php-ext-install curl
 
 # copy NGINX configuration
 # COPY ./docker/nginx.conf /etc/nginx/nginx.conf
-COPY ./docker/nginx.conf /etc/nginx/conf.d/default.conf
+# COPY ./docker/nginx.conf /etc/nginx/conf.d/default.conf
 
 # COPY ./docker/docker-wp.conf /etc/nginx/sites-enabled/docker-wp.conf
 
