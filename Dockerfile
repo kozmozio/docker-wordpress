@@ -72,7 +72,7 @@ COPY ./docker/docker-wordpress-entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/docker-wordpress-entrypoint.sh
 ENTRYPOINT ["/usr/local/bin/docker-wordpress-entrypoint.sh"]
 
-EXPOSE 82
+EXPOSE 9000
 
 # run php-fpm
 CMD ["php-fpm"]

@@ -65,7 +65,7 @@ services:
     networks:
       - docker-wp-net
     ports:
-      - "82:82"
+      - "9000:9000"
 
   # PhpMyAdmin -------------------------------------------------------------------------
   # phpmyadmin:
