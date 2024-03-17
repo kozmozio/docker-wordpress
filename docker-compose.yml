@@ -91,19 +91,19 @@ services:
   #           - docker-wp-net 
   
   # Certbot ----------------------------------------------------------------------------
-  # certbot:
-  #   depends_on:
-  #     - webserver
-  #   image: certbot/certbot
-  #   container_name: certbot
-  #   volumes:
-  #     - certbot-etc:/etc/letsencrypt
-  #     - wordpress:/var/www/html
-  #   command: certonly --webroot --webroot-path=/var/www/html --email sammy@your_domain --agree-tos --no-eff-email --staging -d your_domain -d www.your_domain
+  certbot:
+    depends_on:
+      - webserver
+    image: certbot/certbot
+    container_name: certbot
+    volumes:
+      - certbot-etc:/etc/letsencrypt
+      - wordpress:/var/www/html
+    command: certonly --webroot --webroot-path=/var/www/html --email sammy@your_domain --agree-tos --no-eff-email --staging -d your_domain -d www.your_domain
   
 # Volumes ----------------------------------------------------------------------------
 volumes:
-  # certbot-etc:
+  certbot-etc:
   wordpress: 
   themes:
   plugins:
