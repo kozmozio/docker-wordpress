@@ -99,7 +99,7 @@ services:
     volumes:
       - certbot-etc:/etc/letsencrypt
       - wordpress:/var/www/html
-    command: certonly --webroot --webroot-path=/var/www/html --email sammy@your_domain --agree-tos --no-eff-email --staging -d your_domain -d www.your_domain
+    command: certonly --webroot --webroot-path=/var/www/html --email hello@samplr.io --agree-tos --no-eff-email --staging -d samplr.io -d loop.samplr.io
   
 # Volumes ----------------------------------------------------------------------------
 volumes:
