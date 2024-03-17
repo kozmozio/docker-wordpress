@@ -93,7 +93,7 @@ services:
   # Certbot ----------------------------------------------------------------------------
   certbot:
     depends_on:
-      - webserver
+      - nginx
     image: certbot/certbot
     container_name: certbot
     volumes:

@@ -132,6 +132,6 @@ To start the application, navigate to the directory containing this file and run
   - Change domainconfig file  redirecting your container port
   /etc/nginx/conf.d/domains
 
- /home/kozmoz/conf/web/loop.samplr.io/nginx.ssl.conf
+ /home/kozmoz/conf/web/blog.samplr.io/nginx.ssl.conf
 
 /usr/local/hestia/data/templates/web/nginx/docker.tpl ve .sptl
