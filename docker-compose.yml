@@ -71,25 +71,25 @@ services:
 
   # PhpMyAdmin -------------------------------------------------------------------------
   # phpmyadmin:
-  #         image: phpmyadmin:5.2.1
-  #         container_name: phpmyadmin
-  #         restart: unless-stopped
-  #         depends_on:
-  #             - db
-  #         ports:
-  #             - "8000:8000"
-  #         env_file: .env
-  #         environment:
-  #             PMA_HOST: db
-  #             MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
-  #             MYSQL_USER: $MYSQL_USER
-  #             MYSQL_PASSWORD: $MYSQL_PASSWORD
-  #           # PMA_USER: ${PMA_USER}
-  #           # PMA_PASSWORD: ${PMA_PASSWORD}
-  #           # PMA_CONTROLHOST: pma.docker-wp.local
-  #         networks:
-  #           - docker-wp-net 
-  
+  #   image: phpmyadmin:5.2.1
+  #   container_name: phpmyadmin
+  #   restart: unless-stopped
+  #   depends_on:
+  #       - db
+  #   ports:
+  #       - "8000:8000"
+  #   env_file: .env
+  #   environment:
+  #       PMA_HOST: db
+  #       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+  #       MYSQL_USER: ${MYSQL_USER}
+  #       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+  #       PMA_USER: ${PMA_USER}
+  #       PMA_PASSWORD: ${PMA_PASSWORD}
+  #       PMA_CONTROLHOST: pma.docker-wp.local
+  #   networks:
+  #     - docker-wp-net 
+
   # Certbot ----------------------------------------------------------------------------
   # certbot:
   #   depends_on:
