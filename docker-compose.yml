@@ -15,7 +15,7 @@ services:
       - ./wordpress:/var/www/html
       # - ./index.html:/var/www/html/index.html
       - ./docker/nginx-blog-samplr-io.conf:/etc/nginx/conf.d/default.conf
-      - certbot-etc:/etc/letsencrypt
+      # - certbot-etc:/etc/letsencrypt
     networks:
       - docker-wp-net
       
@@ -102,7 +102,7 @@ services:
   
 # Volumes ----------------------------------------------------------------------------
 volumes:
-  certbot-etc:
+  # certbot-etc:
   wordpress: 
   themes:
   plugins:
