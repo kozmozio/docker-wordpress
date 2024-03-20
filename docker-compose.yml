@@ -48,8 +48,8 @@ services:
     # image: wordpress:6.4.3-php8.2-fpm-alpine
     restart: unless-stopped
     env_file: .env
-    depends_on: 
-      - db
+    # depends_on: 
+    #   - db
     environment:
       PROJECT: ${NAMESPACE} 
       BUILD_TAG: ${BUILD_TAG}
