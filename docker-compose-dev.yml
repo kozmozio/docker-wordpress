@@ -9,34 +9,35 @@ services:
     depends_on:
       - wordpress
     ports:
-      # - "80:80"
-      - "8282:8282"
+      - "80:80"
+      # - "8282:8282"
     volumes:
       - ./wordpress:/var/www/html
       # - ./index.html:/var/www/html/index.html
-      - ./docker/nginx-blog-samplr-io.conf:/etc/nginx/conf.d/default.conf
+      # - ./docker/nginx-blog-samplr-io.conf:/etc/nginx/conf.d/default.conf
+      - ./docker/nginx-local.conf:/etc/nginx/conf.d/default.conf
       # - certbot-etc:/etc/letsencrypt
     networks:
       - docker-wp-net
       
   # MySQL Database -------------------------------------------------------------------
-  # db:
-  #   image: mysql:8.0
-  #   container_name: db
-  #   restart: unless-stopped
-  #   env_file: .env
-  #   environment:
-  #     MYSQL_DATABASE: ${MYSQL_DATABASE}
-  #     MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-  #     MYSQL_USER: ${MYSQL_USER}
-  #     MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-  #   volumes: 
-  #     - ./db-data:/var/lib/mysql
-  #   command: '--default-authentication-plugin=mysql_native_password'
-  #   ports:
-  #     - "3307:3306"
-  #   networks:
-  #     - docker-wp-net
+  db:
+    image: mysql:8.0
+    container_name: db
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes: 
+      - ./db-data:/var/lib/mysql
+    command: '--default-authentication-plugin=mysql_native_password'
+    ports:
+      - "3306:3306"
+    networks:
+      - docker-wp-net
 
   # Wordpress Application --------------------------------------------------------------
   wordpress:
@@ -66,28 +67,30 @@ services:
     networks:
       - docker-wp-net
     ports:
-      - "9001:9000"
+      - "9000:9000"
 
   # PhpMyAdmin -------------------------------------------------------------------------
-  # phpmyadmin:
-  #         image: phpmyadmin:5.2.1
-  #         container_name: phpmyadmin
-  #         restart: unless-stopped
-  #         depends_on:
-  #             - db
-  #         ports:
-  #             - "8000:8000"
-  #         env_file: .env
-  #         environment:
-  #             PMA_HOST: db
-  #             MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
-  #             MYSQL_USER: $MYSQL_USER
-  #             MYSQL_PASSWORD: $MYSQL_PASSWORD
-  #           # PMA_USER: ${PMA_USER}
-  #           # PMA_PASSWORD: ${PMA_PASSWORD}
-  #           # PMA_CONTROLHOST: pma.docker-wp.local
-  #         networks:
-  #           - docker-wp-net 
+  phpmyadmin:
+          image: phpmyadmin:5.2.1
+          container_name: phpmyadmin
+          restart: unless-stopped
+          depends_on:
+              - db
+          # ports:
+          #     - "8000:8000"
+          env_file: .env
+          environment:
+              PMA_HOST: db
+              MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
+              MYSQL_USER: $MYSQL_USER
+              MYSQL_PASSWORD: $MYSQL_PASSWORD
+              PMA_USER: ${PMA_USER}
+              PMA_PASSWORD: ${PMA_PASSWORD}
+              PMA_CONTROLHOST: pmadocker.local
+          networks:
+            - docker-wp-net 
+          # extra_hosts:
+          #   - "pmadocker.local:192.168.32.3"
   
   # Certbot ----------------------------------------------------------------------------
   # certbot:
@@ -97,7 +100,7 @@ services:
   #   container_name: certbot
   #   volumes:
   #     - certbot-etc:/etc/letsencrypt
-  #     - ./wordpress:/var/www/html
+  #     - wordpress:/var/www/html
   #   command: certonly --webroot --webroot-path=/var/www/html --email hello@samplr.io --agree-tos --no-eff-email --staging -d blog.samplr.io -d blog.samplr.io
   
 # Volumes ----------------------------------------------------------------------------
@@ -107,7 +110,7 @@ volumes:
   themes:
   plugins:
   uploads:
-  # db-data:  
+  db-data:  
 
 # Networks ----------------------------------------------------------------------------
 networks:

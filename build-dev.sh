@@ -1,16 +1,31 @@
 #!/bin/bash
 clear 
+#Check if docker is running
+if ! docker info &>/dev/null; then
+    echo "Docker is not running. Please start Docker and try again."
+    exit 1
+fi
 
-echo "Compose up and build..."
+action="$1"
 
-docker-compose -f docker-compose.yml down -d 
-docker-compose -f docker-compose.yml up -d --build --remove-orphans 
+# Check if the first parameter to this script is "build"  else default to up
+if [ "$action" == "fresh" ]; then
+    echo "Compose fresh BUILD and UP..."
+    docker-compose -f docker-compose-dev.yml build --no-cache
+    docker-compose -f docker-compose-dev.yml down --remove-orphans 
+    docker-compose -f docker-compose-dev.yml up -d 
+else
+    echo "Compose UP..."
+    # docker-compose -f docker-compose-dev.yml down  
+    docker-compose -f docker-compose-dev.yml up -d 
+fi  
+
 
 # Check if all services are up and running
 echo "Checking if all services are up and running..."
 
 
-services=("wordpress" "nginx" "db" "phpmyadmin")
+services=("wordpress" "nginx" "db" )
 
 
 for service in "${services[@]}"

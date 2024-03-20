@@ -129,5 +129,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	define( 'ABSPATH', __DIR__ . '/' );
 }
 
+// define('SITE_URL', 'https://blog.samplr.io');
+// define('BLOG_URL', 'https://blog.samplr.io');
+
 /** Sets up WordPress vars and included files. */
 require_once ABSPATH . 'wp-settings.php';
