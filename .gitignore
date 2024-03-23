@@ -18,6 +18,8 @@
 /db-data
 /themes
 /plugins
+/uploads
+/docker/ssl
 
 # General ignores
 /vendor/
