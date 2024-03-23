@@ -15,6 +15,7 @@ services:
       # - ./index.html:/var/www/html/index.html
       - ./docker/nginx-blog-samplr-io.conf:/etc/nginx/conf.d/default.conf
       - /home/kozmoz/conf/web/blog.samplr.io/ssl:/etc/letsencrypt
+    command : "update-ca-certificates"
     networks:
       - docker-wp-net
   # MySQL Database -------------------------------------------------------------------
@@ -89,16 +90,16 @@ services:
   #           - docker-wp-net 
   
   # Certbot ----------------------------------------------------------------------------
-  certbot:
-    depends_on:
-      - nginx
-    image: certbot/certbot
-    container_name: certbot
-    volumes:
-      - certbot-etc:/etc/letsencrypt
-      - /home/kozmoz/conf/web/blog.samplr.io/ssl:/etc/letsencrypt
-      - ./wordpress:/var/www/html
-    command: certonly --webroot --webroot-path=/var/www/html --email hello@samplr.io --agree-tos --no-eff-email --staging -d blog.samplr.io -d blog.samplr.io
+  # certbot:
+  #   depends_on:
+  #     - nginx
+  #   image: certbot/certbot
+  #   container_name: certbot
+  #   volumes:
+  #     - certbot-etc:/etc/letsencrypt
+  #     - /home/kozmoz/conf/web/blog.samplr.io/ssl:/etc/letsencrypt
+  #     - ./wordpress:/var/www/html
+  #   command: certonly --webroot --webroot-path=/var/www/html --email hello@samplr.io --agree-tos --no-eff-email --staging -d blog.samplr.io -d blog.samplr.io
   
 # Volumes ----------------------------------------------------------------------------
 volumes:

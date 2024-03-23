@@ -135,5 +135,7 @@ To start the application, navigate to the directory containing this file and run
  /home/kozmoz/conf/web/blog.samplr.io/nginx.ssl.conf
  /home/kozmoz/conf/web/loop.samplr.io/nginx.ssl.conf
 
+/home/kozmoz/conf/web/blog.samplr.io
+
 /usr/local/hestia/data/templates/web/nginx/docker.tpl ve .sptl
 /usr/local/hestia/data/templates/web/nginx/docker.stpl
