@@ -20,7 +20,7 @@ server {
 
 
     location / {
-        proxy_pass      http://%ip%:8282;
+        proxy_pass      http://%ip%:444;
         location ~* ^.+\.(%proxy_extentions%)$ {
             root           %sdocroot%/[FOLDER-SITE];
             access_log     /var/log/%web_system%/domains/%domain%.log combined;
@@ -35,7 +35,7 @@ server {
     }
 
     location @fallback {
-        proxy_pass      http://%ip%:8282;
+        proxy_pass      http://%ip%:444;
     }
 
     location ~ /\.ht    {return 404;}
