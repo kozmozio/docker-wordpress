@@ -1,5 +1,4 @@
 version: '3.7'
-
 services:
   # NGINX Server-------------------------------------------------------------------------
   nginx:
@@ -18,7 +17,6 @@ services:
       - certbot-etc:/etc/letsencrypt
     networks:
       - docker-wp-net
-      
   # MySQL Database -------------------------------------------------------------------
   db:
     image: mysql:8.0
@@ -103,7 +101,7 @@ services:
   
 # Volumes ----------------------------------------------------------------------------
 volumes:
-  # certbot-etc:
+  certbot-etc:
   wordpress: 
   themes:
   plugins:
