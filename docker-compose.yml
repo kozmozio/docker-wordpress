@@ -104,7 +104,7 @@ services:
   
 # Volumes ----------------------------------------------------------------------------
 volumes:
-  certbot-etc:
+  # certbot-etc:
   wordpress: 
   themes:
   plugins:
