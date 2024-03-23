@@ -15,7 +15,6 @@ services:
       # - ./index.html:/var/www/html/index.html
       - ./docker/nginx-blog-samplr-io.conf:/etc/nginx/conf.d/default.conf
       # - certbot-etc:/etc/letsencrypt
-      - ./ssl:/etc/ca-certificates
     networks:
       - docker-wp-net
   # MySQL Database -------------------------------------------------------------------
@@ -62,31 +61,32 @@ services:
        - ./themes:/var/www/html/wp-content/themes
        - ./plugins:/var/www/html/wp-content/plugins
        - ./uploads:/var/www/html/wp-content/uploads
+       - ./ssl:/etc/ca-certificates
     networks:
       - docker-wp-net
     ports:
       - "9001:9000"
 
   # PhpMyAdmin -------------------------------------------------------------------------
-  # phpmyadmin:
-  #         image: phpmyadmin:5.2.1
-  #         container_name: phpmyadmin
-  #         restart: unless-stopped
-  #         depends_on:
-  #             - db
-  #         ports:
-  #             - "8000:8000"
-  #         env_file: .env
-  #         environment:
-  #             PMA_HOST: db
-  #             MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
-  #             MYSQL_USER: $MYSQL_USER
-  #             MYSQL_PASSWORD: $MYSQL_PASSWORD
-  #           # PMA_USER: ${PMA_USER}
-  #           # PMA_PASSWORD: ${PMA_PASSWORD}
-  #           # PMA_CONTROLHOST: pma.docker-wp.local
-  #         networks:
-  #           - docker-wp-net 
+  phpmyadmin:
+          image: phpmyadmin:5.2.1
+          container_name: phpmyadmin
+          restart: unless-stopped
+          depends_on:
+              - db
+          ports:
+              - "8000:8000"
+          env_file: .env
+          environment:
+              PMA_HOST: db
+              MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
+              MYSQL_USER: $MYSQL_USER
+              MYSQL_PASSWORD: $MYSQL_PASSWORD
+            # PMA_USER: ${PMA_USER}
+            # PMA_PASSWORD: ${PMA_PASSWORD}
+            # PMA_CONTROLHOST: pma.docker-wp.local
+          networks:
+            - docker-wp-net 
   
   # Certbot ----------------------------------------------------------------------------
   # certbot:
