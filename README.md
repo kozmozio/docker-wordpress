@@ -135,7 +135,16 @@ To start the application, navigate to the directory containing this file and run
  /home/kozmoz/conf/web/blog.samplr.io/nginx.ssl.conf
  /home/kozmoz/conf/web/loop.samplr.io/nginx.ssl.conf
 
+ ### Blog.samplr.io Cert Files Locatin Hesita server
 /home/kozmoz/conf/web/blog.samplr.io
+/home/kozmoz/conf/web/blog.samplr.io/ssl/blog.samplr.io.pem;
+/home/kozmoz/conf/web/blog.samplr.io/ssl/blog.samplr.io.key;
 
 /usr/local/hestia/data/templates/web/nginx/docker.tpl ve .sptl
 /usr/local/hestia/data/templates/web/nginx/docker.stpl
+
+## Prompts
+
+You are a devops engineer, tou task is to make live production ready wordpress website inside ddokcer php-fpm enviroment, mysql database and nginx proxy server , hosted in Hestia control panel under another nginx server.
+
+Currently containers are up and running but SSL is not workikng 
