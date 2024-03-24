@@ -9,7 +9,7 @@ services:
       - wordpress
     ports:
       # - "80:80"
-      - "444:443"
+      - "444:444"
     volumes:
       - ./wordpress:/var/www/html
       # - ./index.html:/var/www/html/index.html
