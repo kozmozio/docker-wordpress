@@ -11,13 +11,13 @@ action="$1"
 # Check if the first parameter to this script is "build"  else default to up
 if [ "$action" == "fresh" ]; then
     echo "Compose fresh BUILD and UP..."
-    docker-compose -f docker-compose.yml build --no-cache
-    docker-compose -f docker-compose.yml down --remove-orphans 
-    docker-compose -f docker-compose.yml up -d 
+    docker compose -f docker-compose.yml build --no-cache
+    docker compose -f docker-compose.yml down --remove-orphans 
+    docker compose -f docker-compose.yml up -d 
 else
     echo "Compose UP..."
     # docker-compose -f docker-compose-dev.yml down  
-    docker-compose -f docker-compose.yml up -d 
+    docker compose -f docker-compose.yml up -d 
 fi  
 
 
