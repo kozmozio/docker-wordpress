@@ -128,22 +128,6 @@ To start the application, navigate to the directory containing this file and run
   ```bash
   docker-compose logs -f
 
-## Debian Host Hestia Control Panel 
-  - Change domainconfig file  redirecting your container port
-  /etc/nginx/conf.d/domains
-
- /home/kozmoz/conf/web/blog.samplr.io/nginx.ssl.conf
- /home/kozmoz/conf/web/loop.samplr.io/nginx.ssl.conf
-
- ### Blog.samplr.io Cert Files Locatin Hesita server
-/home/kozmoz/conf/web/blog.samplr.io
-/home/kozmoz/conf/web/blog.samplr.io/ssl/blog.samplr.io.pem;
-/home/kozmoz/conf/web/blog.samplr.io/ssl/blog.samplr.io.key;
-/home/kozmoz/conf/web/blog.samplr.io/ssl/blog.samplr.io.ca;
-/home/kozmoz/conf/web/blog.samplr.io/ssl/blog.samplr.io.crt;
-
-/usr/local/hestia/data/templates/web/nginx/docker.tpl ve .sptl
-/usr/local/hestia/data/templates/web/nginx/docker.stpl
 
 ## Prompts
 
