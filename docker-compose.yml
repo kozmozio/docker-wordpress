@@ -13,8 +13,8 @@ services:
     volumes:
       - ./wordpress:/var/www/html
       # - ./index.html:/var/www/html/index.html
-      - ./docker/nginx-blog-samplr-io.conf:/etc/nginx/conf.d/default.conf
-      - /home/kozmoz/conf/web/blog.samplr.io/ssl:/etc/letsencrypt
+      - ./docker/blog-samplr-io.conf:/etc/nginx/conf.d/default.conf
+      # - /home/kozmoz/conf/web/blog.samplr.io/ssl:/etc/letsencrypt
     # command : "update-ca-certificates"
     networks:
       - docker-wp-net
