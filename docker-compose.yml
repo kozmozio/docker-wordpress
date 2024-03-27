@@ -99,7 +99,7 @@ services:
       - certbot-etc:/etc/letsencrypt
       # - /home/kozmoz/conf/web/blog.samplr.io/ssl:/etc/letsencrypt
       - ./wordpress:/var/www/html
-    command: certonly --webroot --webroot-path=/home/kozmoz/web/blog.samplr.io/docker-wordpress/wordpress --email hello@samplr.io --agree-tos --no-eff-email --staging -d blog.samplr.io -d blog.samplr.io
+    command: certonly --webroot --webroot-path=/var/www/html --email hello@samplr.io --agree-tos --no-eff-email --staging -d blog.samplr.io -d blog.samplr.io
   
 # Volumes ----------------------------------------------------------------------------
 volumes:
